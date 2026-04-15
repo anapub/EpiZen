@@ -1,12 +1,12 @@
 <template>
 
-<!-- Cód. da Img Logo -->
+<!-- Cód. da Img. Logo -->
 <header class="navbar">
   <div class="navbar_logo">
     <img src="../assets/Imagem-logo-sf.png" width="300" height="81">
   </div>
 
-<!-- Cód. para os Botões -->
+<!-- Cód. para os Botões de acesso-->
 <nav aria-label="Menu principal">
   <ul class="navbar_button">
     <li><RouterLink to="/Login">Login</RouterLink></li> 
@@ -49,9 +49,19 @@
     <img src="../assets/Imagem-relatório.png" class="card_icon">
   </div>
 </section>
+
+<!-- Cód. p/ EPIs Monitorados -->
 <section class="epi">
   <div class="epis">
     <p><span>EPIs</span> Monitorados</p>    
+  </div>
+</section>
+
+<!-- Cód. do Fale Conosco -->
+<section class="fale_conosco">
+  <div class="container">
+    <h1>Entre em contato e um<br>dos <span>nossos especialistas</span><br> irá atendê-lo:</h1>
+    
   </div>
 </section>
 
@@ -166,9 +176,26 @@ export default {
 .epi span {
   color: #A8B545;
   font-weight: bold;
-   margin-top: 0rem; 
+  margin-top: 0rem; 
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  width: 60rem;
+  color: #000000;
+  font-size: 1rem;
+  height: 30rem;
+  padding-left: 1rem;
+  margin-top: 0rem; 
+}
+
+
+.container span {
+  color: #A8B545;
+  font-weight: bold;
+  margin-top: 0rem; 
+}
 
 </style>
 
