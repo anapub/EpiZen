@@ -1,71 +1,66 @@
 <template>
 
-<!-- Cód. da Img. Logo -->
-<header class="navbar">
-  <div class="navbar_logo">
-    <img src="../assets/Imagem-logo-sf.png" width="300" height="81">
+  <!-- Cód. da Img. Logo -->
+  <header class="navbar">
+    <div class="navbar_logo">
+      <img src="../assets/Imagem-logo-sf.png" width="300" height="81">
+    </div>
+
+    <!-- Cód. para os Botões de acesso-->
+    <nav aria-label="Menu principal">
+      <ul class="navbar_button">
+        <li>
+          <RouterLink to="/Login">Login</RouterLink>
+        </li>
+        <li>
+          <RouterLink to="/Contato">Contato</RouterLink>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Cód. da Img Home - Banner -->
+  <div class="banner">
+    <img src="../assets/Imagem-home.svg">
   </div>
 
-<!-- Cód. para os Botões de acesso-->
-<nav aria-label="Menu principal">
-  <ul class="navbar_button">
-    <li><RouterLink to="/Login">Login</RouterLink></li> 
-    <li><RouterLink to="/">Home</RouterLink></li> 
-    <li><RouterLink to="/Contato">Contato</RouterLink></li> 
-  </ul>
-</nav>
-</header>
+  <!-- Cód. p/ Frase -->
+  <section class="intro">
+    <h1>O que é a <img src="../assets/Escrita-logo-sf.png" width="170" height="55"><span>?</span></h1>
+    <p>Organize seus EPIs. Simplifique sua rotina. </p>
+  </section>
 
-<!-- Cód. da Img Home - Banner -->
-<div class="banner">
-  <img src="../assets/Imagem-home.svg">
-</div>
+  <!-- Cód. p/ Cards -->
+  <section class="cards">
+    <div class="card">
+      <p>Controle inteligente de EPIs</p>
+      <img src="../assets/Imagem-controle.png" class="card_icon">
+    </div>
 
-<!-- Cód. p/ Frase -->
-<section class="intro">
-  <h1>O que é a <img src="../assets/Escrita-logo-sf.png" width="170" height="55"><span>?</span></h1>
-  <p>Organize seus EPIs. Simplifique sua rotina. </p>
-</section>
+    <div class="card">
+      <p>Gestão de EPIs no modo Zen</p>
+      <img src="../assets/Imagem-gestão.png" class="card_icon">
+    </div>
 
-<!-- Cód. p/ Cards -->
-<section class="cards">
-  <div class="card">
-    <p>Controle inteligente de EPIs</p>
-    <img src="../assets/Imagem-controle.png" class="card_icon">
-  </div>
+    <div class="card">
+      <p>Monitore e consulte facilmente</p>
+      <img src="../assets/Imagem-monitore.png" class="card_icon">
+    </div>
 
-  <div class="card">
-    <p>Gestão de EPIs no modo Zen</p>
-    <img src="../assets/Imagem-gestão.png" class="card_icon">
-  </div>
+    <div class="card">
+      <p>Dados em tempo real</p>
+      <img src="../assets/Imagem-relatório.png" class="card_icon">
+    </div>
+  </section>
 
-  <div class="card">
-    <p>Monitore e consulte facilmente</p>
-    <img src="../assets/Imagem-monitore.png" class="card_icon">
-  </div>
+  <!-- Cód. p/ EPIs Monitorados -->
+  <section class="epi">
+    <div class="epis">
+      <p><span>EPIs</span> Monitorados</p>
+    </div>
+  </section>
 
-  <div class="card">
-    <p>Dados em tempo real</p>
-    <img src="../assets/Imagem-relatório.png" class="card_icon">
-  </div>
-</section>
-
-<!-- Cód. p/ EPIs Monitorados -->
-<section class="epi">
-  <div class="epis">
-    <p><span>EPIs</span> Monitorados</p>    
-  </div>
-</section>
-
-<!-- Cód. do Fale Conosco -->
-<section class="fale_conosco">
-  <div class="container">
-    <h1>Entre em contato e um<br>dos <span>nossos especialistas</span><br> irá atendê-lo:</h1>
-    
-  </div>
-</section>
-
- </template>
+</template>
 
 <script>
 export default {
@@ -74,7 +69,6 @@ export default {
 </script>
 
 <style scoped>
-
 .navbar {
   display: flex;
   align-items: center;
@@ -117,7 +111,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* espaço entre texto e imagem */
+  gap: 0.5rem;
+  /* espaço entre texto e imagem */
 }
 
 .intro span {
@@ -128,7 +123,7 @@ export default {
 .intro p {
   font-size: 2rem;
   color: #024554;
-  margin-top: 0rem; 
+  margin-top: 0rem;
 }
 
 .cards {
@@ -138,20 +133,21 @@ export default {
   margin: 3rem 2rem;
 }
 
-.card { 
-  background: #024554; 
-  color: white; 
-  width: 21rem; 
-  height: 12rem; 
+.card {
+  background: #024554;
+  color: white;
+  width: 21rem;
+  height: 12rem;
   border-radius: 1.25rem;
-  display:flex;
-  flex-direction: column;   
-  align-items: center;      /* centraliza horizontal */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* centraliza horizontal */
   justify-content: center;
-  text-align: center; 
-  padding: 1rem; 
-  font-size: 1.2rem; 
-  transition: 0.3s; 
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.2rem;
+  transition: 0.3s;
 }
 
 .card:hover {
@@ -160,12 +156,12 @@ export default {
 
 .card_icon {
   width: 9rem;
-  height: auto;      
+  height: auto;
 }
 
 .epis {
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   padding: 0 1rem;
   padding-top: 1rem;
   height: 30rem;
@@ -176,26 +172,6 @@ export default {
 .epi span {
   color: #A8B545;
   font-weight: bold;
-  margin-top: 0rem; 
+  margin-top: 0rem;
 }
-
-.container {
-  display: flex;
-  align-items: center;
-  width: 60rem;
-  color: #000000;
-  font-size: 1rem;
-  height: 30rem;
-  padding-left: 1rem;
-  margin-top: 0rem; 
-}
-
-
-.container span {
-  color: #A8B545;
-  font-weight: bold;
-  margin-top: 0rem; 
-}
-
 </style>
-

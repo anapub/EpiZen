@@ -1,6 +1,6 @@
 <template>
-<Menu />
-<Rodape />
+  <Menu />
+  <Rodape />
 </template>
 
 <script>
@@ -15,5 +15,3 @@ export default {
   }
 }
 </script>
-
-
