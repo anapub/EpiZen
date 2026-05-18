@@ -13,9 +13,19 @@
 
       <!-- Menu de navegação -->
       <nav class="menu">
+        <RouterLink to="/dashboard/inventario" class="menu-item" active-class="active">
+          <i class="fas fa-chart-bar"></i>
+          <span>Inventário</span>
+        </RouterLink>
+
         <RouterLink to="/dashboard/cadastro" class="menu-item" active-class="active">
           <i class="fas fa-chart-bar"></i>
           <span>Cadastro de EPIs</span>
+        </RouterLink>
+        
+        <RouterLink to="/dashboard/entrega" class="menu-item" active-class="active">
+          <i class="fas fa-box"></i>
+          <span>Entrega de EPI</span>
         </RouterLink>
 
         <RouterLink to="/dashboard/funcionario" class="menu-item" active-class="active">
@@ -23,15 +33,9 @@
           <span>Funcionários</span>
         </RouterLink>
 
-        <RouterLink to="/dashboard/entrega" class="menu-item" active-class="active">
-          <i class="fas fa-box"></i>
-          <span>Entrega de EPI</span>
-        </RouterLink>
+        
 
-        <RouterLink to="/dashboard/relatorio" class="menu-item" active-class="active">
-          <i class="fas fa-chart-bar"></i>
-          <span>Relatório</span>
-        </RouterLink>
+        
       </nav>
 
       <!-- Botão de logout -->

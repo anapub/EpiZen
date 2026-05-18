@@ -20,12 +20,17 @@
   <main class="fale_conosco">
 
     <!-- TEXTO -->
+  
     <div class="texto">
       <h1>
         Entre em contato e um dos <br>
         <span>nossos especialistas</span><br>
         irá atendê-lo:
       </h1>
+    </div>
+
+    <div class="img-contato">
+      <img src="../assets/Imagem-contato-sf.png" width="200" height="400">
     </div>
 
     <!-- FORMULÁRIO -->

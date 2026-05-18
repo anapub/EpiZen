@@ -26,12 +26,18 @@
 
   <!-- Cód. p/ Frase -->
   <section class="intro">
-    <h1>O que é a <img src="../assets/Escrita-logo-sf.png" width="170" height="55"><span>?</span></h1>
-    <p>Organize seus EPIs. Simplifique sua rotina. </p>
+    <h1>
+      O que é a
+      <img src="../assets/Escrita-logo-sf.png" width="170" height="55">
+      <span>?</span>
+    </h1>
+
+    <p>Organize seus EPIs. Simplifique sua rotina.</p>
   </section>
 
   <!-- Cód. p/ Cards -->
   <section class="cards">
+
     <div class="card">
       <p>Controle inteligente de EPIs</p>
       <img src="../assets/Imagem-controle.png" class="card_icon">
@@ -43,21 +49,58 @@
     </div>
 
     <div class="card">
-      <p>Monitore e consulte facilmente</p>
+      <p>Monitore e consulte de forma simplificada</p>
       <img src="../assets/Imagem-monitore.png" class="card_icon">
     </div>
 
     <div class="card">
-      <p>Dados em tempo real</p>
+      <p>Dados em tempo real: Relatórios</p>
       <img src="../assets/Imagem-relatório.png" class="card_icon">
     </div>
+
   </section>
 
   <!-- Cód. p/ EPIs Monitorados -->
   <section class="epi">
+
     <div class="epis">
-      <p><span>EPIs</span> Monitorados</p>
+      <h1><span>EPIs</span> Monitorados</h1>
     </div>
+
+    <div class="epi-grid">
+
+      <div class="card-epi">
+        <img src="../assets/oculos-de-sol (1).png" class="epi_icon">
+        <p>Óculos</p>
+      </div>
+
+      <div class="card-epi">
+        <img src="../assets/sapato.png" class="epi_icon">
+        <p>Botas</p>
+      </div>
+
+      <div class="card-epi">
+        <img src="../assets/luvas.png" class="epi_icon">
+        <p>Luvas</p>
+      </div>
+
+      <div class="card-epi">
+        <img src="../assets/protetor-auricular.png" class="epi_icon">
+        <p>Protetor Auditivo</p>
+      </div>
+
+      <div class="card-epi">
+        <img src="../assets/capacete.png" class="epi_icon">
+        <p>Capacete</p>
+      </div>
+
+      <div class="card-epi">
+        <img src="../assets/capacete.png" class="epi_icon">
+        <p>Colete</p>
+      </div>
+
+    </div>
+
   </section>
 
 </template>
@@ -69,6 +112,7 @@ export default {
 </script>
 
 <style scoped>
+
 .navbar {
   display: flex;
   align-items: center;
@@ -112,7 +156,6 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  /* espaço entre texto e imagem */
 }
 
 .intro span {
@@ -139,11 +182,12 @@ export default {
   width: 21rem;
   height: 12rem;
   border-radius: 1.25rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* centraliza horizontal */
   justify-content: center;
+
   text-align: center;
   padding: 1rem;
   font-size: 1.2rem;
@@ -159,19 +203,67 @@ export default {
   height: auto;
 }
 
+/* EPIs */
+
+.epi {
+  background: #EDEADC;
+  padding-bottom: 4rem;
+}
+
 .epis {
   display: flex;
   justify-content: center;
-  padding: 0 1rem;
-  padding-top: 1rem;
-  height: 30rem;
+  align-items: center;
+  height: auto;
+  padding-top: 2rem;
   background: #EDEADC;
-  gap: 1rem;
+}
+
+.epis p {
+  font-size: 3rem;
+  color: #024554;
 }
 
 .epi span {
   color: #A8B545;
   font-weight: bold;
-  margin-top: 0rem;
 }
+
+.epi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  padding: 2rem 8rem;
+}
+
+.card-epi {
+  background: #AEB8AC;
+  width: 16rem;
+  height: 10rem;
+  border-radius: 0.8rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s;
+}
+
+.card-epi:hover {
+  transform: translateY(-0.3rem);
+}
+
+.card-epi p {
+  color: #024554;
+  font-size: 1.3rem;
+  margin-top: 0.5rem;
+}
+
+.epi_icon {
+  width: 4.5rem;
+  height: auto;
+}
+
 </style>

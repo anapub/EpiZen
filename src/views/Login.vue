@@ -159,8 +159,8 @@ async function fazerLogin() {
 }
 
 .banner-login img {
-  width: 29rem;
-  height: auto
+  width: 30.5rem;
+  height: 100%;
 }
 
 /* ===== FORM BOX ===== */
