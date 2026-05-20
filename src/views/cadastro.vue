@@ -46,7 +46,7 @@
               <input
                 v-model="form.categoria"
                 type="text"
-                placeholder="Ex: Proteção Facial"
+                placeholder="Ex: Proteção da Cabeça"
                 required
               >
             </div>

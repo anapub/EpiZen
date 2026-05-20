@@ -2,7 +2,7 @@
   <div class="inventario-page">
 
     <header class="top-section">
-      <h1>Estoque de EPIs</h1>
+     <h1>Estoque de <span>EPIs</span></h1>
     </header>
 
     <!-- GRID DOS CARDS -->
@@ -64,7 +64,7 @@
 
                 <img
                   class="info-icon"
-                  src="/src/assets/cor.png"
+                  src="../assets/cor.png"
                   alt="Ícone cor"
                 />
 
@@ -91,7 +91,7 @@
 
                 <img
                   class="info-icon"
-                  src="/src/assets/estoque-pronto.png"
+                  src="../assets/estoque-pronto.png"
                   alt="Ícone estoque"
                 />
 
@@ -166,7 +166,12 @@ onMounted(() => {
 .top-section h1 {
   font-size: 2.3rem;
   font-weight: 700;
-  color: #332D48;
+  color: #024554;
+}
+
+.top-section span {
+  color: #A8B545;
+  font-weight: bold;
 }
 
 /* GRID */

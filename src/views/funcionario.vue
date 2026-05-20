@@ -2,7 +2,7 @@
   <div class="layout-container">
 
     <header class="header-section">
-      <h1> Controle de <span>Funcionários</span> </h1>
+      <h1>Cadastro de <span>Funcionários</span></h1>
       <p>Gerencie o cadastro de colaboradores e organize por setores.</p>
     </header>
 
@@ -10,53 +10,111 @@
 
       <!-- FORM -->
       <section class="card-form">
+
         <div class="card-header">
-          <h3>{{ editandoId ? 'Alterar Registro' : 'Novo Funcionário' }}</h3>
+          <div>
+            <h3>
+              {{ editandoId ? 'Alterar Registro' : 'Novo Funcionário' }}
+            </h3>
+
+            <p>
+              Preencha todos os campos obrigatórios
+            </p>
+          </div>
         </div>
 
         <form @submit.prevent="salvar" class="main-form">
 
+          <!-- LINHA 1 -->
           <div class="form-row">
+
             <div class="form-group">
-              <label>Nome Completo</label>
-              <input v-model="form.nome" type="text" placeholder="Ex: Ana Paula Uaquida Brito" required>
+              <label>Nome Completo *</label>
+
+              <input
+                v-model="form.nome"
+                type="text"
+                placeholder="Ex: Ana Paula Uaquida Brito"
+                required
+              >
             </div>
 
             <div class="form-group">
-              <label>Nº Matrícula</label>
-              <input v-model="form.matricula" type="text" placeholder="Ex: 082001" required>
+              <label>Nº Matrícula *</label>
+
+              <input
+                v-model="form.matricula"
+                type="text"
+                placeholder="Ex: 082001"
+                required
+              >
             </div>
+
           </div>
 
+          <!-- LINHA 2 -->
           <div class="form-row">
+
             <div class="form-group">
-              <label>Setor</label>
-              <input v-model="form.setor" type="text" placeholder="Ex: Qualidade" required>
+              <label>Setor *</label>
+
+              <input
+                v-model="form.setor"
+                type="text"
+                placeholder="Ex: Qualidade"
+                required
+              >
             </div>
 
             <div class="form-group">
-              <label>Cargo</label>
-              <input v-model="form.cargo" type="text" placeholder="Ex: Analista de Qualidade" required>
+              <label>Cargo *</label>
+
+              <input
+                v-model="form.cargo"
+                type="text"
+                placeholder="Ex: Analista de Qualidade"
+                required
+              >
             </div>
+
           </div>
 
+          <!-- BOTÕES -->
           <div class="action-bar">
-            <button type="submit" class="btn btn-primary">
-              {{ carregando ? 'Salvando...' : (editandoId ? 'Atualizar Dados' : 'Finalizar Cadastro') }}
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
+              {{
+                carregando
+                  ? 'Salvando...'
+                  : (editandoId
+                    ? 'Atualizar Dados'
+                    : 'Finalizar Cadastro')
+              }}
             </button>
 
-            <button v-if="editandoId" type="button" @click="cancelarEdicao" class="btn btn-outline">
+            <button
+              v-if="editandoId"
+              type="button"
+              @click="cancelarEdicao"
+              class="btn btn-outline"
+            >
               Cancelar
             </button>
+
           </div>
 
         </form>
+
       </section>
 
       <!-- TABELA -->
       <section class="card-table">
 
         <table class="styled-table">
+
           <thead>
             <tr>
               <th>Colaborador</th>
@@ -67,27 +125,52 @@
           </thead>
 
           <tbody>
-            <tr v-for="f in funcionarios" :key="f.id">
-              <td><span class="text-bold">{{ f.nome }}</span></td>
-              <td>{{ f.matricula }}</td>
+
+            <tr
+              v-for="f in funcionarios"
+              :key="f.id"
+            >
 
               <td>
-                <span class="badge">{{ f.setor }}</span>
-                <span class="cargo-text">{{ f.cargo }}</span>
+                <strong>{{ f.nome }}</strong>
+              </td>
+
+              <td>
+                {{ f.matricula }}
+              </td>
+
+              <td>
+
+                <span class="badge">
+                  {{ f.setor }}
+                </span>
+
+                <span class="cargo-text">
+                  {{ f.cargo }}
+                </span>
+
               </td>
 
               <td class="text-center">
 
-                <button @click="prepararEdicao(f)" class="btn-action edit">
+                <button
+                  @click="prepararEdicao(f)"
+                  class="btn-action edit"
+                >
                   Editar
                 </button>
 
-                <button @click="excluir(f.id)" class="btn-action delete">
+                <button
+                  @click="excluir(f.id)"
+                  class="btn-action delete"
+                >
                   Excluir
                 </button>
 
               </td>
+
             </tr>
+
           </tbody>
 
         </table>
@@ -95,10 +178,12 @@
       </section>
 
     </main>
+
   </div>
 </template>
 
 <script setup>
+
 import { ref, reactive, onMounted } from 'vue'
 import { useSupabase } from '../composables/useSupabase.js'
 
@@ -118,7 +203,9 @@ const form = reactive({
 /* =========================
    CARREGAR DADOS
 ========================= */
+
 const carregar = async () => {
+
   const { data, error } = await supabase
     .from('funcionarios')
     .select('*')
@@ -135,6 +222,7 @@ const carregar = async () => {
 /* =========================
    SALVAR
 ========================= */
+
 const salvar = async () => {
 
   if (!form.nome || !form.matricula) {
@@ -154,11 +242,14 @@ const salvar = async () => {
   let error
 
   if (editandoId.value) {
+
     ({ error } = await supabase
       .from('funcionarios')
       .update(dados)
       .eq('id', editandoId.value))
+
   } else {
+
     ({ error } = await supabase
       .from('funcionarios')
       .insert([dados]))
@@ -173,6 +264,7 @@ const salvar = async () => {
   }
 
   alert('Salvo com sucesso!')
+
   cancelarEdicao()
   carregar()
 }
@@ -180,7 +272,9 @@ const salvar = async () => {
 /* =========================
    EDITAR
 ========================= */
+
 const prepararEdicao = (f) => {
+
   editandoId.value = f.id
 
   Object.assign(form, {
@@ -194,6 +288,7 @@ const prepararEdicao = (f) => {
 /* =========================
    EXCLUIR
 ========================= */
+
 const excluir = async (id) => {
 
   if (!confirm('Deseja realmente remover este registro?')) return
@@ -215,7 +310,9 @@ const excluir = async (id) => {
 /* =========================
    RESET
 ========================= */
+
 const cancelarEdicao = () => {
+
   editandoId.value = null
 
   Object.assign(form, {
@@ -227,54 +324,75 @@ const cancelarEdicao = () => {
 }
 
 onMounted(carregar)
+
 </script>
 
 <style scoped>
+
 .layout-container {
-  max-width: 60rem;
+  max-width: 75rem;
   margin: 0 auto;
   padding: 2rem;
   border: 0.1rem solid #EDEADC;
   min-height: 20rem;
-  background: #FFFFFF;
+  background: #F8F9FA;
 }
+
+/* HEADER */
 
 .header-section {
   color: #024554;
   margin-bottom: 2rem;
 }
 
+.header-section h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 .header-section span {
   color: #A8B545;
 }
 
-.header-section h1 {
-  font-size: 1.8rem;
-}
-
 .header-section p {
+  margin-top: 0.3rem;
   color: #53736A;
 }
 
 /* CARDS */
+
 .card-form,
 .card-table {
-  background: #fff;
-  border-radius: 0.5rem;
+  background: #ffffff;
+  border-radius: 0.75rem;
   border: 0.1rem solid #EDEADC;
   margin-bottom: 2rem;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
   overflow: hidden;
 }
 
+/* HEADER FORM */
+
 .card-header {
   background: #EDEADC;
   color: #024554;
-  padding: 1rem;
-  font-weight: bold;
+  padding: 1.2rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card-header p {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  color: #53736A;
 }
 
 /* FORM */
+
 .main-form {
   padding: 2rem;
 }
@@ -283,58 +401,68 @@ onMounted(carregar)
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  margin-bottom: 1rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  margin-bottom: 1rem;
 }
 
 label {
   font-size: 0.8rem;
   font-weight: 700;
   color: #024554;
+  margin-bottom: 0.35rem;
 }
 
 input {
-  padding: 0.6rem;
-  border: 1px solid #EDEADC;
-  border-radius: 0.4rem;
-  font-size: 0.9rem;
+  height: 2.7rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #EDEADC;
+  padding: 0 1rem;
+  background: #ffffff;
+  font-size: 0.95rem;
 }
 
 input:focus {
   outline: none;
-  border-color: #024554;
+  border-color: #A8B545;
+  box-shadow: 0 0 0 0.1rem rgba(168, 181, 69, 0.2);
 }
 
 /* BOTÕES */
+
 .action-bar {
   display: flex;
-  gap: 0.8rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .btn {
-  padding: 0.6rem 1.2rem;
-  border-radius: 0.4rem;
+  height: 2.8rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   border: none;
-  font-weight: bold;
+  font-weight: 600;
+  padding: 0 1.5rem;
 }
 
 .btn-primary {
   background: #024554;
   color: white;
+  flex: 1;
 }
 
 .btn-outline {
-  background: #EDEADC;
-  color: #64748b;
+  background: transparent;
+  border: 0.1rem solid #53736A;
+  color: #53736A;
+  flex: 1;
 }
 
 /* TABELA */
+
 .styled-table {
   width: 100%;
   border-collapse: collapse;
@@ -342,43 +470,37 @@ input:focus {
 
 .styled-table th {
   background: #EDEADC;
-  padding: 0.8rem;
+  padding: 1rem;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: #024554;
   text-transform: uppercase;
 }
 
 .styled-table td {
-  padding: 0.8rem;
-  border-bottom: 1px solid #EDEADC;
-  font-size: 0.85rem;
   text-align: center;
+  height: 3.5rem;
+  font-size: 0.9rem;
+  border-bottom: 0.1rem solid #F1F1F1;
 }
 
-.text-bold {
-  font-weight: bold;
-}
-
-/* BADGE (SETOR) */
 .badge {
   background: #D9F2E6;
-  text-align: center;
   color: #024554;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
   margin-right: 0.5rem;
-
 }
 
 .cargo-text {
-  color: black;
-  font-size: 0.8rem;
+  color: #000000;
+  font-size: 0.85rem;
 }
 
-/* AÇÕES */
+/* BOTÕES TABELA */
+
 .btn-action {
   background: none;
   border: none;
@@ -388,7 +510,7 @@ input:focus {
 
 .edit {
   color: #D1B54A;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
 }
 
 .delete {
@@ -400,9 +522,21 @@ input:focus {
 }
 
 /* RESPONSIVO */
-@media (max-width: 600px) {
+
+@media (max-width: 768px) {
+
   .form-row {
     grid-template-columns: 1fr;
   }
+
+  .action-bar {
+    flex-direction: column;
+  }
+
+  .layout-container {
+    padding: 1rem;
+  }
+
 }
+
 </style>

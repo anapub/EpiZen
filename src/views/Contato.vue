@@ -30,7 +30,7 @@
     </div>
 
     <div class="img-contato">
-      <img src="../assets/Imagem-contato-sf.png" width="200" height="400">
+      <img src="../assets/Imagem-contato-sf.png" width="190" height="390">
     </div>
 
     <!-- FORMULÁRIO -->
@@ -160,7 +160,7 @@ const enviar = async () => {
 
 /* TEXTO */
 .texto h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 /* Destaque em verde */

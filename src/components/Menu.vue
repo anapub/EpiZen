@@ -49,12 +49,12 @@
     </div>
 
     <div class="card">
-      <p>Monitore e consulte de forma simplificada</p>
+      <p>Monitore e consulte facilmente</p>
       <img src="../assets/Imagem-monitore.png" class="card_icon">
     </div>
 
     <div class="card">
-      <p>Dados em tempo real: Relatórios</p>
+      <p>Relatórios em tempo real</p>
       <img src="../assets/Imagem-relatório.png" class="card_icon">
     </div>
 
@@ -95,7 +95,7 @@
       </div>
 
       <div class="card-epi">
-        <img src="../assets/capacete.png" class="epi_icon">
+        <img src="../assets/colete-de-construcao.png" class="epi_icon">
         <p>Colete</p>
       </div>
 
@@ -151,7 +151,6 @@ export default {
 .intro h1 {
   font-size: 3rem;
   color: #024554;
-
   display: flex;
   align-items: center;
   justify-content: center;
