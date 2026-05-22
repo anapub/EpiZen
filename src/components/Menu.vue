@@ -49,7 +49,7 @@
     </div>
 
     <div class="card">
-      <p>Monitore e consulte facilmente</p>
+      <p>Monitore e consulte facil</p>
       <img src="../assets/Imagem-monitore.png" class="card_icon">
     </div>
 

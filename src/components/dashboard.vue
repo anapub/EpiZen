@@ -25,7 +25,7 @@
         
         <RouterLink to="/dashboard/entrega" class="menu-item" active-class="active">
           <i class="fas fa-box"></i>
-          <span>Entrega de EPI</span>
+          <span>Entrega de EPIs</span>
         </RouterLink>
 
         <RouterLink to="/dashboard/funcionario" class="menu-item" active-class="active">
@@ -33,6 +33,10 @@
           <span>Funcionários</span>
         </RouterLink>
 
+         <RouterLink to="/dashboard/relatorio" class="menu-item" active-class="active">
+          <i class="fas fa-chart-line"></i>
+          <span>Relatórios</span>
+        </RouterLink>
         
 
         

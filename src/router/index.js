@@ -7,6 +7,7 @@ import inventario from '../views/inventario.vue'
 import dashboard from '../components/dashboard.vue'
 import entrega from '../views/entrega.vue'
 import funcionario from '../views/funcionario.vue'
+import relatorio from '../views/relatorio.vue'
 
 
 const routes = [
@@ -22,6 +23,7 @@ const routes = [
     { path: 'entrega', component: entrega },
     { path: 'inventario', component: inventario },
       { path: 'funcionario', component: funcionario },
+      { path: 'relatorio', component: relatorio },
     ]
     }
 ]
