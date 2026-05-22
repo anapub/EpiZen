@@ -113,6 +113,7 @@ export default {
 
 <style scoped>
 
+/* Estilo a barra de navegação */
 .navbar {
   display: flex;
   align-items: center;
@@ -123,12 +124,14 @@ export default {
   gap: 1rem;
 }
 
+/* Estilo dos botões de acesso */
 .navbar_button {
   display: flex;
   list-style: none;
   gap: 1rem;
 }
 
+/* Estilo dos textos dentro dos botões de acesso */
 .navbar_button a {
   text-decoration: none;
   background: #53736A;
@@ -137,17 +140,20 @@ export default {
   border-radius: 1.25rem;
 }
 
+/* Estilo do banner */
 .banner img {
   width: 100%;
   display: block;
   object-fit: cover;
 }
 
+/* Estilo da seção de introdução */
 .intro {
   text-align: center;
   margin-top: 2rem;
 }
 
+/* Estilo do título da introdução */
 .intro h1 {
   font-size: 3rem;
   color: #024554;
@@ -157,17 +163,20 @@ export default {
   gap: 0.5rem;
 }
 
+/* Estilo do destaque no título da introdução */
 .intro span {
   color: #A8B545;
   font-weight: bold;
 }
 
+/* Estilo do parágrafo da introdução */
 .intro p {
   font-size: 2rem;
   color: #024554;
   margin-top: 0rem;
 }
 
+/* Estilo da seção de cards */
 .cards {
   display: flex;
   justify-content: center;
@@ -175,40 +184,41 @@ export default {
   margin: 3rem 2rem;
 }
 
+/* Estilo dos cards */
 .card {
   background: #024554;
   color: white;
   width: 21rem;
   height: 12rem;
   border-radius: 1.25rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   text-align: center;
   padding: 1rem;
   font-size: 1.2rem;
   transition: 0.3s;
 }
 
+/* Efeito das transições nos cards */
 .card:hover {
   transform: translateY(-0.3rem);
 }
 
+/* Estilo das imagens dentro dos cards */
 .card_icon {
   width: 9rem;
   height: auto;
 }
 
-/* EPIs */
-
+/* Estilo da seção de EPIs monitorados */
 .epi {
   background: #EDEADC;
   padding-bottom: 4rem;
 }
 
+/* Estilo da parte superior da seção de EPIs monitorados */
 .epis {
   display: flex;
   justify-content: center;
@@ -218,16 +228,19 @@ export default {
   background: #EDEADC;
 }
 
+/* Estilo do título da seção de EPIs monitorados */
 .epis p {
   font-size: 3rem;
   color: #024554;
 }
 
+/* Estilo do destaque no título da seção de EPIs monitorados */
 .epi span {
   color: #A8B545;
   font-weight: bold;
 }
 
+/* Estilo da grade de EPIs monitorados */
 .epi-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -236,33 +249,34 @@ export default {
   padding: 2rem 8rem;
 }
 
+/* Estilo dos cards de EPIs monitorados */
 .card-epi {
   background: #AEB8AC;
   width: 16rem;
   height: 10rem;
   border-radius: 0.8rem;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   transition: 0.3s;
 }
 
+/* Efeito das transições nos cards de EPIs monitorados */
 .card-epi:hover {
   transform: translateY(-0.3rem);
 }
 
+/* Estilo dos textos dentro dos cards de EPIs monitorados */
 .card-epi p {
   color: #024554;
   font-size: 1.3rem;
   margin-top: 0.5rem;
 }
 
+/* Estilo das imagens dentro dos cards de EPIs monitorados */
 .epi_icon {
   width: 4.5rem;
   height: auto;
 }
-
 </style>

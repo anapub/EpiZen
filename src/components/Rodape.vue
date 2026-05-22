@@ -7,7 +7,6 @@
 </template>
 
 <style scoped>
-
 .rodape {
     display: flex;
     align-items: center;

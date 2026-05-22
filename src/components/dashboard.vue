@@ -22,7 +22,7 @@
           <i class="fas fa-chart-bar"></i>
           <span>Cadastro de EPIs</span>
         </RouterLink>
-        
+
         <RouterLink to="/dashboard/entrega" class="menu-item" active-class="active">
           <i class="fas fa-box"></i>
           <span>Entrega de EPIs</span>
@@ -33,13 +33,11 @@
           <span>Funcionários</span>
         </RouterLink>
 
-         <RouterLink to="/dashboard/relatorio" class="menu-item" active-class="active">
+        <RouterLink to="/dashboard/relatorio" class="menu-item" active-class="active">
           <i class="fas fa-chart-line"></i>
           <span>Relatórios</span>
         </RouterLink>
-        
 
-        
       </nav>
 
       <!-- Botão de logout -->
@@ -53,6 +51,7 @@
     <main class="conteudo">
       <RouterView />
     </main>
+    
   </div>
 </template>
 
@@ -192,34 +191,21 @@ async function sair() {
 /* ===== CONTEÚDO CENTRAL ===== */
 .conteudo {
   flex-grow: 1;
-
-  /* Ocupa todo o espaço restante */
   margin-left: 15rem;
-
-  /* Deixa espaço para a Sidebar fixa (250px) */
   padding: 1.875rem;
-
-  /* Espaço interno */
   overflow-y: auto;
-
-  /* Permite rolar o conteúdo se necessário */
   background-color: #FFFFFF;
 }
 
 /*  RESPONSIVIDADE: Telas pequenas (celulares) */
 @media (max-width: 48rem) {
-
-  /* Em telas pequenas, a Sidebar fica escondida ou reduzida */
   .sidebar {
     width: 12.5rem;
-    /* Reduz a largura da Sidebar */
   }
 
   .conteudo {
     margin-left: 12.5rem;
-    /* Ajusta o espaço para a nova largura */
     padding: 1.25rem;
-    /* Reduz o padding */
   }
 
   .logo {
@@ -235,8 +221,6 @@ async function sair() {
 
 /*  RESPONSIVIDADE: Telas muito pequenas (celulares muito pequenos) */
 @media (max-width: 30rem) {
-
-  /* Em telas muito pequenas, a Sidebar pode ser ocultada com JavaScript */
   .sidebar {
     width: 100%;
     position: absolute;

@@ -32,23 +32,13 @@
             <div class="form-group">
               <label>Nome do EPI *</label>
 
-              <input
-                v-model="form.nome"
-                type="text"
-                placeholder="Ex: Capacete de Segurança"
-                required
-              >
+              <input v-model="form.nome" type="text" placeholder="Ex: Capacete de Segurança" required>
             </div>
 
             <div class="form-group">
               <label>Categoria *</label>
 
-              <input
-                v-model="form.categoria"
-                type="text"
-                placeholder="Ex: Proteção da Cabeça"
-                required
-              >
+              <input v-model="form.categoria" type="text" placeholder="Ex: Proteção da Cabeça" required>
             </div>
 
           </div>
@@ -59,21 +49,13 @@
             <div class="form-group">
               <label>Descrição/Observações</label>
 
-              <input
-                v-model="form.descricao"
-                type="text"
-                placeholder="Ex: Ajuste com elástico"
-              >
-            </div>            
+              <input v-model="form.descricao" type="text" placeholder="Ex: Ajuste com elástico">
+            </div>
 
             <div class="form-group">
               <label>Cor *</label>
 
-              <input
-                v-model="form.cor"
-                type="text"
-                placeholder="Ex: Azul"
-              >
+              <input v-model="form.cor" type="text" placeholder="Ex: Azul">
             </div>
 
           </div>
@@ -84,21 +66,13 @@
             <div class="form-group">
               <label>Quantidade em estoque *</label>
 
-              <input
-                v-model="form.quantidade"
-                type="number"
-                placeholder="0"
-              >
+              <input v-model="form.quantidade" type="number" placeholder="0">
             </div>
 
             <div class="form-group">
               <label>Fornecedor *</label>
 
-              <input
-                v-model="form.fornecedor"
-                type="text"
-                placeholder="Ex: Delta Plus"
-              >
+              <input v-model="form.fornecedor" type="text" placeholder="Ex: Delta Plus">
             </div>
 
           </div>
@@ -107,28 +81,17 @@
           <div class="form-group">
             <label>URL da Foto</label>
 
-            <input
-              v-model="form.foto"
-              type="text"
-              placeholder="Cole a URL da imagem"
-            >
+            <input v-model="form.foto" type="text" placeholder="Cole a URL da imagem">
           </div>
 
           <!-- BOTÕES -->
           <div class="action-bar">
 
-            <button
-              type="submit"
-              class="btn btn-primary"
-            >
+            <button type="submit" class="btn btn-primary">
               {{ editandoId ? 'Salvar Alterações' : 'Salvar EPI' }}
             </button>
 
-            <button
-              type="button"
-              @click="cancelarEdicao"
-              class="btn btn-outline"
-            >
+            <button type="button" @click="cancelarEdicao" class="btn btn-outline">
               Limpar formulário
             </button>
 
@@ -155,10 +118,7 @@
 
           <tbody>
 
-            <tr
-              v-for="(e, index) in epis"
-              :key="e.id ?? index"
-            >
+            <tr v-for="(e, index) in epis" :key="e.id ?? index">
 
               <td>
                 <strong>{{ e.nome }}</strong>
@@ -178,19 +138,11 @@
 
               <td class="text-center">
 
-                <button
-                  type="button"
-                  @click="prepararEdicao(e)"
-                  class="btn-action edit"
-                >
+                <button type="button" @click="prepararEdicao(e)" class="btn-action edit">
                   Editar
                 </button>
 
-                <button
-                  type="button"
-                  @click="excluir(e.id)"
-                  class="btn-action delete"
-                >
+                <button type="button" @click="excluir(e.id)" class="btn-action delete">
                   Excluir
                 </button>
 
@@ -353,7 +305,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
 .layout-container {
   max-width: 75rem;
   margin: 0 auto;
@@ -558,5 +509,4 @@ input:focus {
   }
 
 }
-
 </style>
