@@ -155,12 +155,27 @@ async function fazerLogin() {
 .main-login {
   display: flex;
   align-items: center;
-  gap: 19rem;
+  justify-content: space-between;
+  height: calc(100vh - 5.5rem);
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+.banner-login {
+  height: 100%;
+  width: 45%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;   
+  padding-left: 0;               
 }
 
 .banner-login img {
-  width: 29rem;
   height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: left center;  
 }
 
 /* ===== FORM BOX ===== */
@@ -172,6 +187,7 @@ async function fazerLogin() {
   border-radius: 2rem;
   border: 0.2rem solid #EDEADC;
   background-color: #FFFFFF;
+  margin-right: 20rem;
 }
 
 /* ===== TEXTOS ===== */
