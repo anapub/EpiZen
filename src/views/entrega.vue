@@ -1,22 +1,19 @@
 <template>
   <div class="layout-container">
 
-    <!-- HEADER -->
+    <!-- Cabeçalho  -->
     <header class="header-section">
       <h1>Registrar <span>Retirada de EPIs</span></h1>
-
-      <p>
-        Registre quando um funcionário retirar um EPI do estoque.
-      </p>
+      <p>Registre quando um funcionário retirar um EPI do estoque.</p>
     </header>
 
     <main class="content">
 
-      <!-- FORM -->
+      <!-- Formulário central -->
       <section class="card-form">
 
+        <!-- Cabeçalho do formulário -->
         <div class="card-header">
-
           <div>
             <h3>Informações da Retirada</h3>
 
@@ -27,33 +24,22 @@
 
         </div>
 
-        <form
-          @submit.prevent="registrarRetirada"
-          class="main-form"
-        >
+        <!-- Formulário de retirada -->
+        <form @submit.prevent="registrarRetirada" class="main-form">
 
           <!-- LINHA 1 -->
           <div class="form-row">
 
-            <!-- FUNCIONÁRIO -->
             <div class="form-group">
-
               <label>Funcionário *</label>
 
-              <select
-                v-model="form.funcionario"
-                required
-              >
+              <select v-model="form.funcionario" required>
 
                 <option disabled value="">
                   Selecione o funcionário
                 </option>
 
-                <option
-                  v-for="func in funcionarios"
-                  :key="func.id"
-                  :value="func.nome"
-                >
+                <option v-for="func in funcionarios" :key="func.id" :value="func.nome">
                   {{ func.nome }}
                 </option>
 
@@ -61,26 +47,16 @@
 
             </div>
 
-            <!-- EPI -->
             <div class="form-group">
-
               <label>EPI a ser retirado *</label>
 
-              <select
-                v-model.number="form.epi_id"
-                required
-              >
+              <select v-model.number="form.epi_id" required>
 
                 <option disabled value="">
                   Selecione o EPI
                 </option>
 
-                <option
-                  v-for="epi in epis"
-                  :key="epi.id"
-                  :value="epi.id"
-                  :disabled="epi.quantidade <= 0"
-                >
+                <option v-for="epi in epis" :key="epi.id" :value="epi.id" :disabled="epi.quantidade <= 0">
                   {{ epi.nome }}
                 </option>
 
@@ -93,31 +69,18 @@
           <!-- LINHA 2 -->
           <div class="form-row">
 
-            <!-- ESTOQUE -->
             <div class="form-group">
-
               <label>Estoque disponível</label>
 
-              <input
-                type="text"
-                :value="epiSelecionado?.quantidade ?? 0"
-                disabled
-              >
+              <input type="text" :value="epiSelecionado?.quantidade ?? 0" disabled>
 
             </div>
 
-            <!-- QUANTIDADE -->
             <div class="form-group">
-
               <label>Quantidade a retirar *</label>
 
-              <input
-                v-model.number="form.quantidade"
-                type="number"
-                min="1"
-                :max="epiSelecionado?.quantidade || 1"
-                required
-              >
+              <input v-model.number="form.quantidade" type="number" min="1" :max="epiSelecionado?.quantidade || 1"
+                required>
 
             </div>
 
@@ -126,29 +89,17 @@
           <!-- LINHA 3 -->
           <div class="form-row">
 
-            <!-- DATA -->
             <div class="form-group">
-
               <label>Data da retirada *</label>
 
-              <input
-                v-model="form.data_retirada"
-                type="date"
-                required
-              >
+              <input v-model="form.data_retirada" type="date" required>
 
             </div>
 
-            <!-- HORÁRIO -->
             <div class="form-group">
-
               <label>Horário da retirada *</label>
 
-              <input
-                v-model="form.horario_retirada"
-                type="time"
-                required
-              >
+              <input v-model="form.horario_retirada" type="time" required>
 
             </div>
 
@@ -156,26 +107,17 @@
 
           <div class="form-group">
             <label>Observações</label>
-            <textarea v-model="form.observacoes"
-              placeholder="Adicione observações sobre a retirada do EPI...">
+            <textarea v-model="form.observacoes" placeholder="Adicione observações sobre a retirada do EPI...">
             </textarea>
           </div>
 
-          <!-- BOTÕES -->
           <div class="action-bar">
 
-            <button
-              type="submit"
-              class="btn btn-primary"
-            >
+            <button type="submit" class="btn btn-primary">
               Registrar Retirada
             </button>
 
-            <button
-              type="button"
-              class="btn btn-outline"
-              @click="limparFormulario"
-            >
+            <button type="button" class="btn btn-outline" @click="limparFormulario">
               Limpar formulário
             </button>
 
@@ -218,7 +160,6 @@ const defaultForm = () => ({
 
 const form = reactive(defaultForm())
 
-/* EPI SELECIONADO */
 const epiSelecionado = computed(() => {
   return epis.value.find(
     e => e.id === form.epi_id
@@ -226,7 +167,6 @@ const epiSelecionado = computed(() => {
 
 })
 
-/* RESET FORM */
 const resetForm = () => {
   Object.assign(form, defaultForm())
   const agora = new Date()
@@ -236,7 +176,6 @@ const resetForm = () => {
     agora.toTimeString().slice(0, 5)
 }
 
-/* CARREGAR EPIS */
 const carregarEPIs = async () => {
   const { data, error } = await supabase
     .from('epis')
@@ -255,7 +194,6 @@ const carregarEPIs = async () => {
 
 }
 
-/* CARREGAR FUNCIONÁRIOS */
 const carregarFuncionarios = async () => {
   const { data, error } = await supabase
     .from('funcionarios')
@@ -270,7 +208,6 @@ const carregarFuncionarios = async () => {
   funcionarios.value = data || []
 }
 
-/* REGISTRAR RETIRADA */
 const registrarRetirada = async () => {
   if (!epiSelecionado.value) {
     alert('Selecione um EPI válido')
@@ -286,7 +223,6 @@ const registrarRetirada = async () => {
   }
   try {
 
-    /* CHAMAR FUNCTION */
     const { error } = await supabase.rpc(
       'registrar_retirada',
       {
@@ -310,12 +246,10 @@ const registrarRetirada = async () => {
   }
 }
 
-/* LIMPAR FORMULÁRIO */
 const limparFormulario = () => {
   resetForm()
 }
 
-/* INIT */
 onMounted(() => {
   resetForm()
   carregarEPIs()
@@ -325,7 +259,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
 .layout-container {
   max-width: 75rem;
   margin: 0 auto;
@@ -413,7 +346,7 @@ label {
 
 input,
 select,
-textarea{
+textarea {
   height: 2.7rem;
   border-radius: 0.5rem;
   border: 0.1rem solid #EDEADC;
@@ -483,5 +416,4 @@ textarea:focus {
   }
 
 }
-
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="layout-container">
 
-    <!-- HEADER -->
+    <!-- Cabeçalho -->
     <header class="header-section">
       <h1>Cadastro de <span>EPIs</span></h1>
       <p>Gerencie os equipamentos de proteção individual disponíveis</p>
@@ -9,9 +9,10 @@
 
     <main class="content">
 
-      <!-- FORMULÁRIO -->
+      <!-- Formulário central -->
       <section class="card-form">
 
+        <!-- Cabeçalho do formulário -->
         <div class="card-header">
           <div>
             <h3>
@@ -24,6 +25,7 @@
           </div>
         </div>
 
+        <!-- Formulário de cadastro/edição -->
         <form @submit.prevent="salvar" class="main-form">
 
           <!-- LINHA 1 -->
@@ -84,7 +86,7 @@
             <input v-model="form.foto" type="text" placeholder="Cole a URL da imagem">
           </div>
 
-          <!-- BOTÕES -->
+          <!-- Botões -->
           <div class="action-bar">
 
             <button type="submit" class="btn btn-primary">
@@ -101,23 +103,25 @@
 
       </section>
 
-      <!-- TABELA -->
+      <!-- Tabela de EPIs - Mostra todos os equipamentos cadastrados -->
       <section class="card-table">
 
+        <!-- Tabela de EPIs - Mostra todos os equipamentos cadastrados -->
         <table class="styled-table">
-
           <thead>
             <tr>
               <th>Equipamento</th>
               <th>Categoria</th>
-              <th>Qtde em Estoque</th>
+              <th>Qtd. em Estoque</th>
               <th>Descrição</th>
               <th class="text-center">Ações</th>
             </tr>
           </thead>
 
+          <!-- Corpo da tabela - Lista os EPIs cadastrados -->
           <tbody>
 
+            <!-- Lista os EPIs e exibe cada um em uma linha da tabela -->
             <tr v-for="(e, index) in epis" :key="e.id ?? index">
 
               <td>
@@ -136,6 +140,7 @@
                 {{ e.descricao }}
               </td>
 
+              <!-- Ações de editar e excluir - Exibe os botões para cada linha da tabela -->
               <td class="text-center">
 
                 <button type="button" @click="prepararEdicao(e)" class="btn-action edit">
@@ -171,8 +176,6 @@ const { supabase } = useSupabase()
 const epis = ref([])
 const editandoId = ref(null)
 
-/* FORM PADRÃO */
-
 const defaultForm = () => ({
   nome: '',
   categoria: '',
@@ -184,8 +187,6 @@ const defaultForm = () => ({
 })
 
 const form = reactive(defaultForm())
-
-/* CARREGAR EPIS */
 
 const carregar = async () => {
 
@@ -201,8 +202,6 @@ const carregar = async () => {
 
   epis.value = data || []
 }
-
-/* SALVAR */
 
 const salvar = async () => {
 
@@ -249,8 +248,6 @@ const salvar = async () => {
   alert('EPI salvo com sucesso!')
 }
 
-/* PREPARAR EDIÇÃO */
-
 const prepararEdicao = (e) => {
 
   editandoId.value = e.id
@@ -265,8 +262,6 @@ const prepararEdicao = (e) => {
     foto: e.foto || '',
   })
 }
-
-/* EXCLUIR */
 
 const excluir = async (id) => {
 
@@ -287,16 +282,12 @@ const excluir = async (id) => {
   carregar()
 }
 
-/* LIMPAR */
-
 const cancelarEdicao = () => {
 
   editandoId.value = null
 
   Object.assign(form, defaultForm())
 }
-
-/* INICIAR */
 
 onMounted(() => {
   carregar()
@@ -305,6 +296,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* LAYOUT - Fundo da página */
 .layout-container {
   max-width: 75rem;
   margin: 0 auto;
@@ -314,30 +306,31 @@ onMounted(() => {
   background: #F8F9FA;
 }
 
-/* HEADER */
-
+/* CABEÇALHO - Nome da Página */
 .header-section {
   color: #024554;
   margin-bottom: 2rem;
 }
 
+/* Título principal */
 .header-section h1 {
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
 }
 
+/* Destaque da palavra "EPIs" no título */
 .header-section span {
   color: #A8B545;
 }
 
+/* Subtítulo abaixo do título principal */
 .header-section p {
   margin-top: 0.3rem;
-  color: #53736A;
+  color: #024554;
 }
 
-/* CARDS */
-
+/* CARDS - Formulário e Tabela */
 .card-form,
 .card-table {
   background: #ffffff;
@@ -348,43 +341,46 @@ onMounted(() => {
   overflow: hidden;
 }
 
-/* HEADER FORM */
-
+/* Cabeçalho dos cards - Formulário e Tabela */
 .card-header {
   background: #EDEADC;
   color: #024554;
   padding: 1.2rem;
 }
 
+/* Título do card (ex: "Informações do Equipamento") */
 .card-header h3 {
   margin: 0;
   font-size: 1rem;
 }
 
+/* Subtítulo do card (ex: "Preencha todos os campos obrigatórios") */
 .card-header p {
   margin: 0.2rem 0 0;
   font-size: 0.85rem;
   color: #53736A;
 }
 
-/* FORM */
-
+/* FORMULÁRIO */
 .main-form {
   padding: 2rem;
 }
 
+/* Cada linha do formulário - Agrupa os campos em linhas */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
+/* Cada grupo de campo (label + input) */
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
+/* Rótulo dos campos do formulário */
 label {
   font-size: 0.8rem;
   font-weight: 700;
@@ -392,6 +388,7 @@ label {
   margin-bottom: 0.35rem;
 }
 
+/* Campos de entrada do formulário */
 input {
   height: 2.7rem;
   border-radius: 0.5rem;
@@ -401,20 +398,21 @@ input {
   font-size: 0.95rem;
 }
 
+/* Efeito de foco nos campos de entrada */
 input:focus {
   outline: none;
   border-color: #A8B545;
   box-shadow: 0 0 0 0.1rem rgba(168, 181, 69, 0.2);
 }
 
-/* BOTÕES */
-
+/* Barra de ações - Contém os botões de salvar e limpar */
 .action-bar {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
 }
 
+/* Estilos dos botões */
 .btn {
   height: 2.8rem;
   border-radius: 0.5rem;
@@ -424,12 +422,14 @@ input:focus {
   padding: 0 1.5rem;
 }
 
+/* Botão principal (Salvar) */
 .btn-primary {
   background: #024554;
   color: white;
   flex: 1;
 }
 
+/* Botão secundário (Limpar formulário) */
 .btn-outline {
   background: transparent;
   border: 0.1rem solid #53736A;
@@ -437,13 +437,13 @@ input:focus {
   flex: 1;
 }
 
-/* TABELA */
-
+/* TABELA - Estilos para a tabela de EPIs */
 .styled-table {
   width: 100%;
   border-collapse: collapse;
 }
 
+/* Cabeçalho da tabela */
 .styled-table th {
   background: #EDEADC;
   padding: 1rem;
@@ -453,6 +453,7 @@ input:focus {
   text-transform: uppercase;
 }
 
+/* Corpo da tabela - Cada célula */
 .styled-table td {
   text-align: center;
   height: 3.5rem;
@@ -460,6 +461,7 @@ input:focus {
   border-bottom: 0.1rem solid #F1F1F1;
 }
 
+/* Estilo para o nome do equipamento na tabela */
 .badge {
   background: #D9F2E6;
   color: #024554;
@@ -469,8 +471,7 @@ input:focus {
   font-weight: bold;
 }
 
-/* BOTÕES TABELA */
-
+/* Botões de ação (Editar) na tabela */
 .edit {
   color: #D1B54A;
   cursor: pointer;
@@ -480,6 +481,7 @@ input:focus {
   margin-right: 1rem;
 }
 
+/* Botões de ação (Excluir) na tabela */
 .delete {
   color: #A44A3F;
   cursor: pointer;
@@ -488,12 +490,12 @@ input:focus {
   font-weight: bold;
 }
 
+/* Centraliza o conteúdo da coluna de ações na tabela */
 .text-center {
   text-align: center;
 }
 
-/* RESPONSIVO */
-
+/* RESPONSIVO - Ajustes para telas menores */
 @media (max-width: 768px) {
 
   .form-row {

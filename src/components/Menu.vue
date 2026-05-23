@@ -112,7 +112,6 @@ export default {
 </script>
 
 <style scoped>
-
 /* Estilo a barra de navegação */
 .navbar {
   display: flex;

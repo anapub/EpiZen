@@ -159,7 +159,7 @@ async function fazerLogin() {
 }
 
 .banner-login img {
-  width: 30.5rem;
+  width: 29rem;
   height: 100%;
 }
 

@@ -19,8 +19,7 @@
   <!-- Seção principal com texto e formulário -->
   <main class="fale_conosco">
 
-    <!-- TEXTO -->
-
+    <!-- Mensagem principal - Informação -->
     <div class="texto">
       <h1>
         Entre em contato e um dos <br>
@@ -29,14 +28,15 @@
       </h1>
     </div>
 
+    <!-- Imagem lateral -->
     <div class="img-contato">
       <img src="../assets/Imagem-contato-sf.png" width="190" height="390">
     </div>
 
-    <!-- FORMULÁRIO -->
+    <!-- Formulário de contato -->
     <form class="form">
 
-      <!-- NOME -->
+
       <div class="form-group">
         <input type="text" placeholder="Nome" v-model="form.nome" required>
       </div>
@@ -51,16 +51,18 @@
         <input type="text" placeholder="Celular" v-model="form.celular">
       </div>
 
-      <!-- RADIO -->
+      <!-- PREFERÊNCIA DE CONTATO -->
       <div class="radio-group">
         <b class="titulo-radio">Como prefere ser contatado?</b>
 
+        <!-- Opções de contato 1 -->
         <div class="radio-labels">
           <label>
             <input type="radio" value="WhatsApp" v-model="form.preferencia">
             WhatsApp
           </label>
 
+          <!-- Opções de contato 2 -->
           <label>
             <input type="radio" value="E-mail" v-model="form.preferencia">
             E-mail
@@ -96,7 +98,6 @@ const form = reactive({
   mensagem: ''
 })
 
-// 🔹 ENVIAR PARA SUPABASE
 const enviar = async () => {
 
   const { error } = await supabase
@@ -111,7 +112,6 @@ const enviar = async () => {
 
   alert('Mensagem enviada com sucesso!')
 
-  // limpar form
   form.nome = ''
   form.email = ''
   form.celular = ''
@@ -121,6 +121,7 @@ const enviar = async () => {
 </script>
 
 <style scoped>
+
 /* Parte superior com logo e menu */
 .navbar {
   display: flex;
@@ -158,7 +159,7 @@ const enviar = async () => {
   gap: 2rem;
 }
 
-/* TEXTO */
+/* Titulo principal */
 .texto h1 {
   font-size: 2.5rem;
 }
@@ -168,7 +169,7 @@ const enviar = async () => {
   color: #A8B545;
 }
 
-/* FORMULÁRIO */
+/* Formulário de contato */
 .form {
   background: #EDEADC;
   padding: 2rem;
@@ -179,7 +180,7 @@ const enviar = async () => {
   gap: 1rem;
 }
 
-/* mantém seu padrão de input */
+/* Campos do formulário */
 .form-group input,
 .form-group textarea {
   width: 100%;
@@ -189,13 +190,13 @@ const enviar = async () => {
   background-color: #FFFFFF;
 }
 
-/* textarea */
+/* Área de texto */
 textarea {
   height: 6rem;
   resize: none;
 }
 
-/* radios alinhados */
+/* Opções de contato alinhadas */
 .radio-group {
   display: flex;
   gap: 0.5rem;
@@ -204,13 +205,14 @@ textarea {
   font-size: 0.9rem;
 }
 
+/* Alinhamento dos rótulos das opções de contato */
 .radio-group label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-/* botão padrão igual cadastro */
+/* Botão de envio */
 button {
   padding: 10px;
   background-color: #024554;
@@ -221,6 +223,7 @@ button {
   cursor: pointer;
 }
 
+/* Efeito no botão */
 button:hover {
   opacity: 0.9;
 }
