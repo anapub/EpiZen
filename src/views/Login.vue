@@ -187,7 +187,7 @@ async function fazerLogin() {
   border-radius: 2rem;
   border: 0.2rem solid #EDEADC;
   background-color: #FFFFFF;
-  margin-right: 20rem;
+  margin-right: 19.5rem;
 }
 
 /* ===== TEXTOS ===== */
