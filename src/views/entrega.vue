@@ -259,6 +259,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* LAYOUT - Fundo da página */
 .layout-container {
   max-width: 75rem;
   margin: 0 auto;
@@ -268,30 +269,31 @@ onMounted(() => {
   background: #F8F9FA;
 }
 
-/* HEADER */
-
+/* CABEÇALHO - Nome da Página */
 .header-section {
   color: #024554;
   margin-bottom: 2rem;
 }
 
+/* Título principal */
 .header-section h1 {
   margin: 0;
   font-size: 2rem;
   font-weight: 700;
 }
 
+/*  Destaque do nome da página */
 .header-section span {
   color: #A8B545;
 }
 
+/* Subtítulo */
 .header-section p {
   margin-top: 0.3rem;
   color: #53736A;
 }
 
-/* CARD */
-
+/* CARD - Formulário de registro de retirada */
 .card-form {
   background: #ffffff;
   border-radius: 0.75rem;
@@ -300,43 +302,46 @@ onMounted(() => {
   overflow: hidden;
 }
 
-/* HEADER FORM */
-
+/* Cabeçalho do card */
 .card-header {
   background: #EDEADC;
   color: #024554;
   padding: 1.2rem;
 }
 
+/* Título do card */
 .card-header h3 {
   margin: 0;
   font-size: 1rem;
 }
 
+/* Subtítulo do card */
 .card-header p {
   margin: 0.2rem 0 0;
   font-size: 0.85rem;
   color: #53736A;
 }
 
-/* FORM */
-
+/* Formulário dentro do card */
 .main-form {
   padding: 2rem;
 }
 
+/* Linhas do formulário - Agrupamento de campos lado a lado */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
+/* Grupos de campos dentro do formulário */
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
+/* Campos do formulário */
 label {
   font-size: 0.8rem;
   font-weight: 700;
@@ -344,6 +349,7 @@ label {
   margin-bottom: 0.35rem;
 }
 
+/* Estilo para os campos de entrega */
 input,
 select,
 textarea {
@@ -355,12 +361,14 @@ textarea {
   font-size: 0.95rem;
 }
 
+/* Estilo específico para o campo de observações */
 textarea {
-  min-height: 10rem;
+  min-height: 5rem;
   padding-top: 1rem;
   resize: none;
 }
 
+/* Efeito de foco para os campos de entrega */
 input:focus,
 select:focus,
 textarea:focus {
@@ -369,14 +377,14 @@ textarea:focus {
   box-shadow: 0 0 0 0.1rem rgba(168, 181, 69, 0.2);
 }
 
-/* BOTÕES */
-
+/* Botões de registrar e limpar formulário */
 .action-bar {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
 }
 
+/* Estilo base para os botões */
 .btn {
   height: 2.8rem;
   border-radius: 0.5rem;
@@ -386,12 +394,14 @@ textarea:focus {
   padding: 0 1.5rem;
 }
 
+/* Botão principal de registrar retirada */
 .btn-primary {
   background: #024554;
   color: white;
   flex: 1;
 }
 
+/* Botão secundário de limpar formulário */
 .btn-outline {
   background: transparent;
   border: 0.1rem solid #53736A;
@@ -399,8 +409,7 @@ textarea:focus {
   flex: 1;
 }
 
-/* RESPONSIVO */
-
+/* Efeito de hover para os botões */
 @media (max-width: 768px) {
 
   .form-row {

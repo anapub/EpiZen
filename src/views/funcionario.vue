@@ -1,91 +1,63 @@
 <template>
+
+  <!-- LAYOUT PRINCIPAL -->
   <div class="layout-container">
 
+    <!-- Cabeçalho principal -->
     <header class="header-section">
       <h1>Cadastro de <span>Funcionários</span></h1>
       <p>Gerencie o cadastro de colaboradores e organize por setores.</p>
     </header>
 
+    <!-- Conteúdo principal -->
     <main class="content">
 
-      <!-- FORM -->
+      <!-- Formulário -->
       <section class="card-form">
 
+        <!-- Cabeçalho do formulário -->
         <div class="card-header">
           <div>
-            <h3>
-              {{ editandoId ? 'Alterar Registro' : 'Novo Funcionário' }}
-            </h3>
-
-            <p>
-              Preencha todos os campos obrigatórios
-            </p>
+            <h3>{{ editandoId ? 'Alterar Registro' : 'Novo Funcionário' }}</h3>
+            <p>Preencha todos os campos obrigatórios</p>
           </div>
         </div>
 
+        <!-- Formulário de cadastro/edição -->
         <form @submit.prevent="salvar" class="main-form">
 
           <!-- LINHA 1 -->
           <div class="form-row">
-
             <div class="form-group">
               <label>Nome Completo *</label>
-
-              <input
-                v-model="form.nome"
-                type="text"
-                placeholder="Ex: Ana Paula Uaquida Brito"
-                required
-              >
+              <input v-model="form.nome" type="text" placeholder="Ex: Ana Paula Uaquida Brito" required>
             </div>
 
             <div class="form-group">
               <label>Nº Matrícula *</label>
-
-              <input
-                v-model="form.matricula"
-                type="text"
-                placeholder="Ex: 082001"
-                required
-              >
+              <input v-model="form.matricula" type="text" placeholder="Ex: 082001" required>
             </div>
 
           </div>
 
           <!-- LINHA 2 -->
           <div class="form-row">
-
             <div class="form-group">
               <label>Setor *</label>
-
-              <input
-                v-model="form.setor"
-                type="text"
-                placeholder="Ex: Qualidade"
-                required
-              >
+              <input v-model="form.setor" type="text" placeholder="Ex: Qualidade" required>
             </div>
 
             <div class="form-group">
               <label>Cargo *</label>
-
-              <input
-                v-model="form.cargo"
-                type="text"
-                placeholder="Ex: Analista de Qualidade"
-                required
-              >
+              <input v-model="form.cargo" type="text" placeholder="Ex: Analista de Qualidade" required>
             </div>
 
           </div>
 
-          <!-- BOTÕES -->
+          <!-- Botões de ação -->
           <div class="action-bar">
 
-            <button
-              type="submit"
-              class="btn btn-primary"
-            >
+            <button type="submit" class="btn btn-primary">
               {{
                 carregando
                   ? 'Salvando...'
@@ -95,12 +67,7 @@
               }}
             </button>
 
-            <button
-              v-if="editandoId"
-              type="button"
-              @click="cancelarEdicao"
-              class="btn btn-outline"
-            >
+            <button v-if="editandoId" type="button" @click="cancelarEdicao" class="btn btn-outline">
               Cancelar
             </button>
 
@@ -126,10 +93,7 @@
 
           <tbody>
 
-            <tr
-              v-for="f in funcionarios"
-              :key="f.id"
-            >
+            <tr v-for="f in funcionarios" :key="f.id">
 
               <td>
                 <strong>{{ f.nome }}</strong>
@@ -153,17 +117,11 @@
 
               <td class="text-center">
 
-                <button
-                  @click="prepararEdicao(f)"
-                  class="btn-action edit"
-                >
+                <button @click="prepararEdicao(f)" class="btn-action edit">
                   Editar
                 </button>
 
-                <button
-                  @click="excluir(f.id)"
-                  class="btn-action delete"
-                >
+                <button @click="excluir(f.id)" class="btn-action delete">
                   Excluir
                 </button>
 
@@ -200,10 +158,6 @@ const form = reactive({
   cargo: ''
 })
 
-/* =========================
-   CARREGAR DADOS
-========================= */
-
 const carregar = async () => {
 
   const { data, error } = await supabase
@@ -218,10 +172,6 @@ const carregar = async () => {
 
   funcionarios.value = data || []
 }
-
-/* =========================
-   SALVAR
-========================= */
 
 const salvar = async () => {
 
@@ -269,10 +219,6 @@ const salvar = async () => {
   carregar()
 }
 
-/* =========================
-   EDITAR
-========================= */
-
 const prepararEdicao = (f) => {
 
   editandoId.value = f.id
@@ -284,10 +230,6 @@ const prepararEdicao = (f) => {
     cargo: f.cargo
   })
 }
-
-/* =========================
-   EXCLUIR
-========================= */
 
 const excluir = async (id) => {
 
@@ -307,10 +249,6 @@ const excluir = async (id) => {
   carregar()
 }
 
-/* =========================
-   RESET
-========================= */
-
 const cancelarEdicao = () => {
 
   editandoId.value = null
@@ -329,6 +267,7 @@ onMounted(carregar)
 
 <style scoped>
 
+/* LAYOUT PRINCIPAL */
 .layout-container {
   max-width: 75rem;
   margin: 0 auto;
@@ -338,13 +277,13 @@ onMounted(carregar)
   background: #F8F9FA;
 }
 
-/* HEADER */
-
+/* SEÇÃO DE CABEÇALHO */
 .header-section {
   color: #024554;
   margin-bottom: 2rem;
 }
 
+/* SEÇÃO DE CABEÇALHO */
 .header-section h1 {
   margin: 0;
   font-size: 2rem;
@@ -538,5 +477,4 @@ input:focus {
   }
 
 }
-
 </style>

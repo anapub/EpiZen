@@ -327,7 +327,7 @@ onMounted(() => {
 /* Subtítulo abaixo do título principal */
 .header-section p {
   margin-top: 0.3rem;
-  color: #024554;
+  color: #53736A;
 }
 
 /* CARDS - Formulário e Tabela */
