@@ -6,7 +6,6 @@
       <img src="../assets/Imagem-logo-sf.png" width="300" height="81">
     </div>
 
-    <!-- Menu de navegação -->
     <nav>
       <ul class="navbar_button">
         <li>
@@ -16,10 +15,9 @@
     </nav>
   </header>
 
-  <!-- Seção principal com texto e formulário -->
+  <!-- Seção principal -->
   <main class="fale_conosco">
 
-    <!-- Mensagem principal - Informação -->
     <div class="texto">
       <h1>
         Entre em contato e um dos <br>
@@ -28,55 +26,77 @@
       </h1>
     </div>
 
-    <!-- Imagem lateral -->
     <div class="img-contato">
       <img src="../assets/Imagem-contato-sf.png" width="190" height="390">
     </div>
 
-    <!-- Formulário de contato -->
-    <form class="form">
-
+    <!-- FORMULÁRIO -->
+    <form class="form" @submit.prevent="enviar">
 
       <div class="form-group">
-        <input type="text" placeholder="Nome" v-model="form.nome" required>
+        <input
+          type="text"
+          placeholder="Nome"
+          v-model="form.nome"
+          required
+        >
       </div>
 
-      <!-- EMAIL -->
       <div class="form-group">
-        <input type="email" placeholder="E-mail" v-model="form.email" required>
+        <input
+          type="email"
+          placeholder="E-mail"
+          v-model="form.email"
+          required
+        >
       </div>
 
-      <!-- CELULAR -->
       <div class="form-group">
-        <input type="text" placeholder="Celular" v-model="form.celular">
+        <input
+          type="text"
+          placeholder="Celular"
+          v-model="form.celular"
+        >
       </div>
 
-      <!-- PREFERÊNCIA DE CONTATO -->
       <div class="radio-group">
         <b class="titulo-radio">Como prefere ser contatado?</b>
 
-        <!-- Opções de contato 1 -->
         <div class="radio-labels">
           <label>
-            <input type="radio" value="WhatsApp" v-model="form.preferencia">
+            <input
+              type="radio"
+              value="WhatsApp"
+              v-model="form.preferencia"
+            >
             WhatsApp
           </label>
 
-          <!-- Opções de contato 2 -->
           <label>
-            <input type="radio" value="E-mail" v-model="form.preferencia">
+            <input
+              type="radio"
+              value="E-mail"
+              v-model="form.preferencia"
+            >
             E-mail
           </label>
         </div>
       </div>
 
-      <!-- MENSAGEM -->
       <div class="form-group">
-        <textarea placeholder="Mensagem (Motivo do contato)" v-model="form.mensagem"></textarea>
+        <textarea
+          placeholder="Mensagem (Motivo do contato)"
+          v-model="form.mensagem"
+          required
+        ></textarea>
       </div>
 
-      <!-- BOTÃO -->
-      <button type="submit">Enviar</button>
+      <button
+        type="submit"
+        :disabled="carregando"
+      >
+        {{ carregando ? 'Enviando...' : 'Enviar' }}
+      </button>
 
     </form>
 
@@ -85,10 +105,12 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref } from 'vue'
 import { useSupabase } from '../composables/useSupabase'
 
 const { supabase } = useSupabase()
+
+const carregando = ref(false)
 
 const form = reactive({
   nome: '',
@@ -98,7 +120,22 @@ const form = reactive({
   mensagem: ''
 })
 
+const limparFormulario = () => {
+  form.nome = ''
+  form.email = ''
+  form.celular = ''
+  form.preferencia = ''
+  form.mensagem = ''
+}
+
 const enviar = async () => {
+  if (!form.nome || !form.email || !form.mensagem) {
+    alert('Preencha os campos obrigatórios.')
+    return
+  }
+
+  carregando.value = true
+
   try {
     const { data, error } = await supabase
       .from('contatos')
@@ -121,17 +158,15 @@ const enviar = async () => {
     }
 
     alert('Mensagem enviada com sucesso!')
-
-    form.nome = ''
-    form.email = ''
-    form.celular = ''
-    form.preferencia = ''
-    form.mensagem = ''
+    limparFormulario()
 
   } catch (error) {
     console.error('Erro ao enviar:', error)
     alert(`Erro ao enviar mensagem: ${error.message}`)
+  } finally {
+    carregando.value = false
   }
+ 
 }
 </script>
 
