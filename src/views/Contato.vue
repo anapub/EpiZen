@@ -99,24 +99,39 @@ const form = reactive({
 })
 
 const enviar = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('contatos')
+      .insert([
+        {
+          nome: form.nome,
+          email: form.email,
+          celular: form.celular,
+          preferencia: form.preferencia,
+          mensagem: form.mensagem
+        }
+      ])
+      .select()
 
-  const { error } = await supabase
-    .from('contatos')
-    .insert([form])
+    console.log('DATA:', data)
+    console.log('ERROR:', error)
 
-  if (error) {
-    console.error(error)
-    alert('Erro ao enviar mensagem')
-    return
+    if (error) {
+      throw error
+    }
+
+    alert('Mensagem enviada com sucesso!')
+
+    form.nome = ''
+    form.email = ''
+    form.celular = ''
+    form.preferencia = ''
+    form.mensagem = ''
+
+  } catch (error) {
+    console.error('Erro ao enviar:', error)
+    alert(`Erro ao enviar mensagem: ${error.message}`)
   }
-
-  alert('Mensagem enviada com sucesso!')
-
-  form.nome = ''
-  form.email = ''
-  form.celular = ''
-  form.preferencia = ''
-  form.mensagem = ''
 }
 </script>
 
